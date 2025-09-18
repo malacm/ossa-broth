@@ -441,8 +441,14 @@ export default function BrothPage() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 transition-colors placeholder-gray-600 text-black"
                     style={{
-                      focusRingColor: "#927D14",
                       borderColor: "#D2C6B2",
+                      outline: "none",
+                    }}
+                    onFocus={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "none";
                     }}
                     placeholder="Your full name"
                   />
@@ -463,8 +469,14 @@ export default function BrothPage() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 transition-colors placeholder-gray-600 text-black"
                     style={{
-                      focusRingColor: "#927D14",
                       borderColor: "#D2C6B2",
+                      outline: "none",
+                    }}
+                    onFocus={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "none";
                     }}
                     placeholder="your.email@example.com"
                   />
@@ -484,8 +496,14 @@ export default function BrothPage() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 transition-colors text-black"
                     style={{
-                      focusRingColor: "#927D14",
                       borderColor: "#D2C6B2",
+                      outline: "none",
+                    }}
+                    onFocus={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "none";
                     }}
                   >
                     <option value="">Select quantity</option>
@@ -592,8 +610,14 @@ export default function BrothPage() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 transition-colors placeholder-gray-600 text-black"
                     style={{
-                      focusRingColor: "#927D14",
                       borderColor: "#D2C6B2",
+                      outline: "none",
+                    }}
+                    onFocus={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "none";
                     }}
                     placeholder="Your full name"
                   />
@@ -614,8 +638,14 @@ export default function BrothPage() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 transition-colors placeholder-gray-600 text-black"
                     style={{
-                      focusRingColor: "#927D14",
                       borderColor: "#D2C6B2",
+                      outline: "none",
+                    }}
+                    onFocus={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "none";
                     }}
                     placeholder="your.email@example.com"
                   />
@@ -635,8 +665,14 @@ export default function BrothPage() {
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 transition-colors text-black"
                     style={{
-                      focusRingColor: "#927D14",
                       borderColor: "#D2C6B2",
+                      outline: "none",
+                    }}
+                    onFocus={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "none";
                     }}
                   >
                     <option value="">Select inquiry type</option>
@@ -662,8 +698,14 @@ export default function BrothPage() {
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-opacity-50 transition-colors resize-none placeholder-gray-600 text-black"
                     style={{
-                      focusRingColor: "#927D14",
                       borderColor: "#D2C6B2",
+                      outline: "none",
+                    }}
+                    onFocus={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLElement).style.boxShadow = "none";
                     }}
                     placeholder="Tell us more about your inquiry..."
                   />
