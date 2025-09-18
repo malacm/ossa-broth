@@ -155,10 +155,10 @@ export default function BrothPage() {
                 className="px-8 py-4 rounded-2xl font-bold text-white shadow-xl transition-all duration-200 hover:scale-105 cursor-pointer"
                 style={{ backgroundColor: "#E9E7D9" }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = "rgba(233, 231, 217, 0.8)";
+                  (e.target as HTMLElement).style.backgroundColor = "rgba(233, 231, 217, 0.8)";
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = "#E9E7D9";
+                  (e.target as HTMLElement).style.backgroundColor = "#E9E7D9";
                 }}
               >
                 <div className="text-base md:text-xl mb-1 text-[#442727]">ORDER NOW</div>
@@ -506,12 +506,12 @@ export default function BrothPage() {
                       color: "#442727",
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = "#442727";
-                      e.target.style.color = "#E9E7D9";
+                      (e.target as HTMLElement).style.backgroundColor = "#442727";
+                      (e.target as HTMLElement).style.color = "#E9E7D9";
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = "transparent";
-                      e.target.style.color = "#442727";
+                      (e.target as HTMLElement).style.backgroundColor = "transparent";
+                      (e.target as HTMLElement).style.color = "#442727";
                     }}
                   >
                     Cancel
@@ -521,12 +521,12 @@ export default function BrothPage() {
                     className="flex-1 py-3 px-6 rounded-lg font-semibold text-white transition-colors duration-200 cursor-pointer"
                     style={{ backgroundColor: "#927D14" }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = "#442727";
-                      e.target.style.color = "#E9E7D9";
+                      (e.target as HTMLElement).style.backgroundColor = "#442727";
+                      (e.target as HTMLElement).style.color = "#E9E7D9";
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = "#927D14";
-                      e.target.style.color = "white";
+                      (e.target as HTMLElement).style.backgroundColor = "#927D14";
+                      (e.target as HTMLElement).style.color = "white";
                     }}
                   >
                     Place Order
@@ -679,12 +679,12 @@ export default function BrothPage() {
                       color: "#442727",
                     }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = "#927D14";
-                      e.target.style.color = "#442727";
+                      (e.target as HTMLElement).style.backgroundColor = "#927D14";
+                      (e.target as HTMLElement).style.color = "#442727";
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = "transparent";
-                      e.target.style.color = "#442727";
+                      (e.target as HTMLElement).style.backgroundColor = "transparent";
+                      (e.target as HTMLElement).style.color = "#442727";
                     }}
                   >
                     Cancel
@@ -694,12 +694,12 @@ export default function BrothPage() {
                     className="flex-1 py-3 px-6 rounded-lg font-semibold text-white transition-colors duration-200 cursor-pointer"
                     style={{ backgroundColor: "#442727" }}
                     onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = "#927D14";
-                      e.target.style.color = "#442727";
+                      (e.target as HTMLElement).style.backgroundColor = "#927D14";
+                      (e.target as HTMLElement).style.color = "#442727";
                     }}
                     onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = "#442727";
-                      e.target.style.color = "white";
+                      (e.target as HTMLElement).style.backgroundColor = "#442727";
+                      (e.target as HTMLElement).style.color = "white";
                     }}
                   >
                     Send Inquiry
