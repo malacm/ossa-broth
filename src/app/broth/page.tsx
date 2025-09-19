@@ -1,30 +1,60 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useRef } from "react";
 import Image from "next/image";
 
 export default function BrothPage() {
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [isInquiryModalOpen, setIsInquiryModalOpen] = useState(false);
 
+  // Create refs for scroll tracking
+  const heroRef = useRef(null);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-       <section
-         className="relative h-screen w-full bg-cover bg-center bg-no-repeat"
-         style={{
-           backgroundImage: "url('/stock-bg.jpg')",
-         }}
-       >
+      <section
+        ref={heroRef}
+        className="relative h-screen w-full bg-cover bg-center bg-no-repeat z-10"
+        style={{
+          backgroundImage: "url('/stock-bg.jpg')",
+        }}
+      >
         <div className="relative h-full w-full">
+          {/* Fixed Product Image Container */}
+          <div className="fixed inset-0 flex items-center justify-center z-15">
+            <motion.div
+              className="w-[600px] h-[700px] lg:w-[700px] lg:h-[800px] xl:w-[1100px] xl:h-[1200px]"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                y: [0, -20, 0],
+              }}
+              transition={{
+                opacity: { duration: 1.5, ease: "easeOut" },
+                scale: { duration: 1.5, ease: "easeOut" },
+                y: { duration: 2, repeat: Infinity, ease: "easeInOut", delay: 2 },
+              }}
+            >
+              <Image
+                src="/ossa-ossa.png"
+                alt="OSSA BROTH - Premium Medicinal Bone Broth in Mason Jar"
+                width={800}
+                height={900}
+                className="w-full h-full object-contain transform rotate-45"
+                priority
+              />
+            </motion.div>
+          </div>
           {/* Animated Background Text Band */}
           <div className="absolute inset-0 z-0 overflow-hidden">
             {/* Left band - vertical on desktop, horizontal on mobile */}
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, "-50%"],
-                x: [0, "-50%"]
+                x: [0, "-50%"],
               }}
               transition={{
                 duration: 20,
@@ -44,9 +74,9 @@ export default function BrothPage() {
             </motion.div>
             {/* Right band - vertical on desktop, horizontal on mobile */}
             <motion.div
-              animate={{ 
+              animate={{
                 y: ["-50%", 0],
-                x: [0, "-50%"]
+                x: [0, "-50%"],
               }}
               transition={{
                 duration: 20,
@@ -100,45 +130,6 @@ export default function BrothPage() {
             </motion.div>
           </div>
 
-          {/* Product Image - Centered */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 100, rotate: -5 }}
-              animate={{ opacity: 1, y: 0, rotate: 0 }}
-              transition={{
-                duration: 1.2,
-                delay: 0.8,
-                type: "spring",
-                damping: 20,
-                stiffness: 100,
-              }}
-              className="relative"
-            >
-              {/* OSSA BROTH Product Image */}
-              <motion.div
-                className="w-[400px] h-[500px] sm:w-[500px] sm:h-[600px] md:w-[600px] md:h-[700px] lg:w-[700px] lg:h-[800px] xl:w-[1000px] xl:h-[1100px]"
-                animate={{
-                  y: [0, -20, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 2, // Start levitating after initial reveal completes
-                }}
-              >
-                <Image
-                  src="/ossa-broth.png"
-                  alt="OSSA BROTH - Premium Medicinal Bone Broth in Mason Jar"
-                  width={800}
-                  height={900}
-                  className="w-full h-full object-contain"
-                  priority
-                />
-              </motion.div>
-            </motion.div>
-          </div>
-
           {/* Order Now Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -155,13 +146,16 @@ export default function BrothPage() {
                 className="px-8 py-4 rounded-2xl font-bold text-white shadow-xl transition-all duration-200 hover:scale-105 cursor-pointer"
                 style={{ backgroundColor: "#E9E7D9" }}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.backgroundColor = "rgba(233, 231, 217, 0.8)";
+                  (e.target as HTMLElement).style.backgroundColor =
+                    "rgba(233, 231, 217, 0.8)";
                 }}
                 onMouseLeave={(e) => {
                   (e.target as HTMLElement).style.backgroundColor = "#E9E7D9";
                 }}
               >
-                <div className="text-base md:text-xl mb-1 text-[#442727]">ORDER NOW</div>
+                <div className="text-base md:text-xl mb-1 text-[#442727]">
+                  ORDER NOW
+                </div>
                 <div className="text-sm opacity-90 text-[#442727]">$15/JAR</div>
               </motion.button>
             </div>
@@ -171,7 +165,7 @@ export default function BrothPage() {
 
       {/* Ingredients Section */}
       <section
-        className="py-20 px-8 md:px-16"
+        className="py-20 px-8 md:px-16 relative z-30 overflow-hidden"
         style={{ backgroundColor: "#D2C6B2" }}
       >
         <div className="max-w-6xl mx-auto">
@@ -242,7 +236,7 @@ export default function BrothPage() {
 
       {/* FAQ Section */}
       <section
-        className="py-20 px-8 md:px-16"
+        className="py-20 px-8 md:px-16 relative z-30 overflow-hidden"
         style={{ backgroundColor: "#E9E7D9" }}
       >
         <div className="max-w-4xl mx-auto">
@@ -321,7 +315,7 @@ export default function BrothPage() {
 
       {/* Forms Section */}
       <section
-        className="py-20 px-8 md:px-16"
+        className="py-20 px-8 md:px-16 relative z-30 overflow-hidden"
         style={{ backgroundColor: "#D2C6B2" }}
       >
         <div className="max-w-6xl mx-auto">
@@ -445,7 +439,8 @@ export default function BrothPage() {
                       outline: "none",
                     }}
                     onFocus={(e) => {
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                      (e.target as HTMLElement).style.boxShadow =
+                        "0 0 0 2px #927D14";
                     }}
                     onBlur={(e) => {
                       (e.target as HTMLElement).style.boxShadow = "none";
@@ -473,7 +468,8 @@ export default function BrothPage() {
                       outline: "none",
                     }}
                     onFocus={(e) => {
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                      (e.target as HTMLElement).style.boxShadow =
+                        "0 0 0 2px #927D14";
                     }}
                     onBlur={(e) => {
                       (e.target as HTMLElement).style.boxShadow = "none";
@@ -500,7 +496,8 @@ export default function BrothPage() {
                       outline: "none",
                     }}
                     onFocus={(e) => {
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                      (e.target as HTMLElement).style.boxShadow =
+                        "0 0 0 2px #927D14";
                     }}
                     onBlur={(e) => {
                       (e.target as HTMLElement).style.boxShadow = "none";
@@ -524,11 +521,13 @@ export default function BrothPage() {
                       color: "#442727",
                     }}
                     onMouseEnter={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "#442727";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "#442727";
                       (e.target as HTMLElement).style.color = "#E9E7D9";
                     }}
                     onMouseLeave={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "transparent";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "transparent";
                       (e.target as HTMLElement).style.color = "#442727";
                     }}
                   >
@@ -539,11 +538,13 @@ export default function BrothPage() {
                     className="flex-1 py-3 px-6 rounded-lg font-semibold text-white transition-colors duration-200 cursor-pointer"
                     style={{ backgroundColor: "#927D14" }}
                     onMouseEnter={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "#442727";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "#442727";
                       (e.target as HTMLElement).style.color = "#E9E7D9";
                     }}
                     onMouseLeave={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "#927D14";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "#927D14";
                       (e.target as HTMLElement).style.color = "white";
                     }}
                   >
@@ -614,7 +615,8 @@ export default function BrothPage() {
                       outline: "none",
                     }}
                     onFocus={(e) => {
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                      (e.target as HTMLElement).style.boxShadow =
+                        "0 0 0 2px #927D14";
                     }}
                     onBlur={(e) => {
                       (e.target as HTMLElement).style.boxShadow = "none";
@@ -642,7 +644,8 @@ export default function BrothPage() {
                       outline: "none",
                     }}
                     onFocus={(e) => {
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                      (e.target as HTMLElement).style.boxShadow =
+                        "0 0 0 2px #927D14";
                     }}
                     onBlur={(e) => {
                       (e.target as HTMLElement).style.boxShadow = "none";
@@ -669,7 +672,8 @@ export default function BrothPage() {
                       outline: "none",
                     }}
                     onFocus={(e) => {
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                      (e.target as HTMLElement).style.boxShadow =
+                        "0 0 0 2px #927D14";
                     }}
                     onBlur={(e) => {
                       (e.target as HTMLElement).style.boxShadow = "none";
@@ -702,7 +706,8 @@ export default function BrothPage() {
                       outline: "none",
                     }}
                     onFocus={(e) => {
-                      (e.target as HTMLElement).style.boxShadow = "0 0 0 2px #927D14";
+                      (e.target as HTMLElement).style.boxShadow =
+                        "0 0 0 2px #927D14";
                     }}
                     onBlur={(e) => {
                       (e.target as HTMLElement).style.boxShadow = "none";
@@ -721,11 +726,13 @@ export default function BrothPage() {
                       color: "#442727",
                     }}
                     onMouseEnter={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "#927D14";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "#927D14";
                       (e.target as HTMLElement).style.color = "#442727";
                     }}
                     onMouseLeave={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "transparent";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "transparent";
                       (e.target as HTMLElement).style.color = "#442727";
                     }}
                   >
@@ -736,11 +743,13 @@ export default function BrothPage() {
                     className="flex-1 py-3 px-6 rounded-lg font-semibold text-white transition-colors duration-200 cursor-pointer"
                     style={{ backgroundColor: "#442727" }}
                     onMouseEnter={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "#927D14";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "#927D14";
                       (e.target as HTMLElement).style.color = "#442727";
                     }}
                     onMouseLeave={(e) => {
-                      (e.target as HTMLElement).style.backgroundColor = "#442727";
+                      (e.target as HTMLElement).style.backgroundColor =
+                        "#442727";
                       (e.target as HTMLElement).style.color = "white";
                     }}
                   >
